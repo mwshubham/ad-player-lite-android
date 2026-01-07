@@ -83,7 +83,7 @@ fun SwitchableExample(modifier: Modifier) {
     ) {
         // Top Container
         PlayerContainer(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(4f),
             isActive = isTopContainer,
             activeLabel = "Active Player Container (Top)",
             inactiveLabel = "Top Container (Inactive)",
@@ -100,7 +100,7 @@ fun SwitchableExample(modifier: Modifier) {
 
         // Bottom Container
         PlayerContainer(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(3f),
             isActive = !isTopContainer,
             activeLabel = "Active Player Container (Bottom)",
             inactiveLabel = "Bottom Container (Inactive)",
