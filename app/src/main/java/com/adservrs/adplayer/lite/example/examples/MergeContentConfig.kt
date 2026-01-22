@@ -79,6 +79,7 @@ fun MergeContentConfigExample(modifier: Modifier) {
             factory = {
                 val view = AdPlayerView(it)
                 controller.value = view.load(pubId = PUB_ID, tagId = TAG_ID)
+                controller.value?.hideControls()
                 view
             },
             onRelease = {
@@ -96,7 +97,7 @@ fun MergeContentConfigExample(modifier: Modifier) {
         ) {
             for (control in contentControlKeys) {
                 item {
-                    val state = contentControls[control]
+                    val state = contentControls[control] ?: false
                     ListItem(
                         headlineContent = { Text(control) },
                         trailingContent = {
@@ -124,4 +125,23 @@ fun MergeContentConfigExample(modifier: Modifier) {
             }
         }
     }
+}
+
+fun AdPlayerController.hideControls() {
+    // Use in case of Ads.
+    showPlayButton.value = false
+    showFullscreenButton.value = false
+
+    // Used in case of content.
+    val config1 = JSONObject()
+    val config2 = JSONObject().put(
+        "matches",
+        JSONObject().put("device", JSONArray().put("mobile"))
+    )
+    for (key in contentControlKeys) {
+        config1.put(key, JSONObject().put("enable", false))
+        config2.put(key, JSONObject().put("enable", false))
+    }
+    mergeContentConfig(config1)
+    mergeContentConfig(config2)
 }
