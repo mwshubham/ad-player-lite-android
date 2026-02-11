@@ -14,6 +14,7 @@ import com.adservrs.adplayer.lite.example.examples.InstreamContentOverrideExampl
 import com.adservrs.adplayer.lite.example.examples.MasterHeadExample
 import com.adservrs.adplayer.lite.example.examples.MergeContentConfigExample
 import com.adservrs.adplayer.lite.example.examples.Preloading
+import com.adservrs.adplayer.lite.example.examples.SearchResponseExample
 import com.adservrs.adplayer.lite.example.examples.SimpleExample
 import com.adservrs.adplayer.lite.example.examples.SwitchableExample
 
@@ -58,6 +59,12 @@ enum class Example {
         @Composable
         override fun Compose(modifier: Modifier) {
             MergeContentConfigExample(modifier)
+        }
+    },
+    SearchResponse {
+        @Composable
+        override fun Compose(modifier: Modifier) {
+            SearchResponseExample(modifier)
         }
     };
 
